@@ -77,7 +77,7 @@ $WGET -s ${REPOSITORY_AVAHI}/avahi.tcz
                         sudo echo "snapclient.tcz" >> /mnt/mmcblk0p2/tce/onboot.lst
                         sudo echo "/usr/local/etc/init.d/snapclient" >> /opt/.filetool.lst
                         sudo echo "/usr/local/etc/snapclient.conf" >> /opt/.filetool.lst
-                        sudo echo "sleep 1" >> bootlocal.sh
+                        sudo echo "sleep 1" >> /opt/bootlocal.sh
                         sudo echo "/usr/local/etc/init.d/snapclient start" >> /opt/bootlocal.sh
                         tce-load -wi libvorbis
                         tce-load -wi libogg
