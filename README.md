@@ -20,5 +20,5 @@ $ amixer cset numid=3 2
 ```
 Analog:
 ```
-amixer cset numid=3 1
+$ amixer cset numid=3 1
 ```
