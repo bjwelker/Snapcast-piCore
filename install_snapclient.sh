@@ -67,9 +67,9 @@ $WGET -s ${REPOSITORY_AVAHI}/avahi.tcz
                         sudo echo "/usr/local/etc/init.d/snapclient" >> /opt/.filetool.lst
                         sudo echo "/usr/local/etc/snapclient.conf" >> /opt/.filetool.lst
                         sudo echo "/usr/local/etc/init.d/snapclient start" >> /opt/bootlocal.sh
-                        sudo tce-load -wi libvorbis
-                        sudo tce-load -wi libogg
-                        sudo tce-load -wi flac
+                        tce-load -wi libvorbis
+                        tce-load -wi libogg
+                        tce-load -wi flac
                         sudo filetool.sh -b
                         echo '[ OK ] Done install Snapcast.'
                         echo '[ OK ] Please reboot your System.'
