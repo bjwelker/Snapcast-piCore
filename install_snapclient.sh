@@ -2,8 +2,13 @@
 REPOSITORY_AVAHI="http://ralph_irving.users.sourceforge.net/pico"
 REPOSITORY_SNAPCAST="https://github.com/bjwelker/Snapcast-piCore/raw/master"
 WGET="sudo /bin/busybox wget"
+sudo rm -f /opt/tcemirror
+sudo touch /opt/tcemirror
+sudo echo "http://distro.ibiblio.org/tinycorelinux/" >> /opt/tcemirror
+sudo echo "http://ftp.nluug.nl/os/Linux/distr/tinycorelinux/" >> /opt/tcemirror
 echo '[ INFO ] Installing ALSA'
 tce-load -wi alsa-config
+sudo echo "/sbin/modprobe snd_bcm2835" >> /opt/bootlocal.sh
 echo '[ OK ] Installing ALSA done.'
 sudo mount /mnt/mmcblk0p1/
 sudo rm -f /mnt/mmcblk0p1/cmdline.txt
@@ -73,7 +78,7 @@ $WGET -s ${REPOSITORY_AVAHI}/avahi.tcz
                         sudo echo "snapclient.tcz" >> /mnt/mmcblk0p2/tce/onboot.lst
                         sudo echo "/usr/local/etc/init.d/snapclient" >> /opt/.filetool.lst
                         sudo echo "/usr/local/etc/snapclient.conf" >> /opt/.filetool.lst
-                        sudo echo "sleep 1" >> /opt/.filetool.lst
+                        sudo echo "sleep 1" >> bootlocal.sh
                         sudo echo "/usr/local/etc/init.d/snapclient start" >> /opt/bootlocal.sh
                         tce-load -wi libvorbis
                         tce-load -wi libogg
