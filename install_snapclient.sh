@@ -1,6 +1,6 @@
 #!/bin/sh
 REPOSITORY_AVAHI="http://ralph_irving.users.sourceforge.net/pico"
-REPOSITORY_SNAPCAST=""
+REPOSITORY_SNAPCAST="https://github.com/bjwelker/Snapcast-piCore/raw/master"
 WGET="sudo /bin/busybox wget"
 sudo rm -f /tmp/avahi/*
 sudo mkdir /tmp/avahi
@@ -54,7 +54,7 @@ $WGET -s ${REPOSITORY_AVAHI}/avahi.tcz
                 if [ $RESULT = 0 ]; then
                         echo '[ OK ] Download Avahi successful.'
                         echo '[ OK ] Downloading Snapcast'
-                        $WGET ${REPOSITORY_SNAPCAST}/snapcast.tcz -O /tmp/avahi/snapcast.tcz
+                        $WGET ${REPOSITORY_SNAPCAST}/snapclient.tcz -O /tmp/avahi/snapclient.tcz
                         echo '[ OK ] Download Snapcast successful.'
                         sudo chown -R tc:staff /tmp/avahi/*
                         sudo chmod -R 644 /tmp/avahi/*
