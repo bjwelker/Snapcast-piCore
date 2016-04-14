@@ -3,8 +3,7 @@ REPOSITORY_AVAHI="http://ralph_irving.users.sourceforge.net/pico"
 REPOSITORY_SNAPCAST="https://github.com/bjwelker/Snapcast-piCore/raw/master"
 WGET="sudo /bin/busybox wget"
 sudo rm -f /opt/tcemirror
-sudo touch /opt/tcemirror
-sudo echo "http://distro.ibiblio.org/tinycorelinux/" >> /opt/tcemirror
+sudo echo "http://distro.ibiblio.org/tinycorelinux/" > /opt/tcemirror
 sudo echo "http://ftp.nluug.nl/os/Linux/distr/tinycorelinux/" >> /opt/tcemirror
 echo '[ INFO ] Installing ALSA'
 tce-load -wi alsa-config
