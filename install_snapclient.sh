@@ -2,6 +2,13 @@
 REPOSITORY_AVAHI="http://ralph_irving.users.sourceforge.net/pico"
 REPOSITORY_SNAPCAST="https://github.com/bjwelker/Snapcast-piCore/raw/master"
 WGET="sudo /bin/busybox wget"
+echo '[ INFO ] Installing ALSA'
+tce-load -wi alsa-config
+echo '[ OK ] Installing ALSA done.'
+sudo mount /mnt/mmcblk0p1/
+sudo rm -f /mnt/mmcblk0p1/cmdline.txt
+sudo touch /mnt/mmcblk0p1/cmdline.txt
+sudo echo "tz=CET-1CEST,M3.5.0,M10.5.0/3 dwc_otg.fiq_fsm_mask=0x7 waitusb=5 dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/ram0 elevator=deadline rootwait quiet nortc loglevel=3 noembed smsc95xx.turbo_mode=N noswap nozswap consoleblank=0  host=SnapCast-One" >> /mnt/mmcblk0p1/cmdline.txt
 sudo rm -f /tmp/avahi/*
 sudo mkdir /tmp/avahi
 echo '[ INFO ] Downloading Avahi from Ralphy'\''s repository...'
