@@ -14,6 +14,7 @@ $ ./install_snapclient.sh
 ```
 After reboot snapclient should play :)
 To switch betwean HDMI and analog output use
+
 HDMI:
 ```
 $ amixer cset numid=3 2
