@@ -32,4 +32,4 @@ Analog:
 ```
 $ amixer cset numid=3 1
 ```
-or just connect to the Webinterface on http://<SnapCast Client IP>
+or just connect to the Webinterface on http://SnapCast-Client-IP
