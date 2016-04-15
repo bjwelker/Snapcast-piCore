@@ -1,6 +1,15 @@
 You only need resize_sd.sh and install_snapclient.sh
 
-First run
+Download both install scripts to a fresh piCore Installation
+```
+$ wget https://github.com/bjwelker/Snapcast-piCore/raw/master/install_snapclient.sh
+$ wget https://github.com/bjwelker/Snapcast-piCore/raw/master/resize_sd.sh
+```
+Make the script executable
+```
+$ chmod +x *.sh
+```
+Run the SD resize so it´s space enough
 ``` 
 $ ./resize_sd.sh
 ``` 
@@ -23,3 +32,4 @@ Analog:
 ```
 $ amixer cset numid=3 1
 ```
+or just connect to the Webinterface on http://<SnapCast Client IP>
