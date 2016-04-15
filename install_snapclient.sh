@@ -2,9 +2,22 @@
 REPOSITORY_AVAHI="http://ralph_irving.users.sourceforge.net/pico"
 REPOSITORY_SNAPCAST="https://github.com/bjwelker/Snapcast-piCore/raw/master"
 WGET="sudo /bin/busybox wget"
+W="/bin/busybox wget"
 sudo rm -f /opt/tcemirror
 sudo echo "http://distro.ibiblio.org/tinycorelinux/" > /opt/tcemirror
 sudo echo "http://ftp.nluug.nl/os/Linux/distr/tinycorelinux/" >> /opt/tcemirror
+echo '[ INFO ] Installing Webinterface'
+tce-load -wi busybox-httpd
+mkdir /home/tc/www
+mkdir /home/tc/www/cgi-bin
+$W ${REPOSITORY_SNAPCAST}/www/index.html -O /home/tc/www/index.html
+$W ${REPOSITORY_SNAPCAST}/www/cgi.bin/api.sh -O /home/tc/www/cgi-bin/api.sh
+$WGET ${REPOSITORY_SNAPCAST}/httpd -O /usr/local/etc/init.d/httpd
+chmod +x /home/tc/www/cgi-bin/api.sh
+sudo chmod +x /usr/local/etc/init.d/httpd
+sudo echo "/usr/local/etc/init.d/httpd" >> /opt/.filetool.lst
+sudo echo "/usr/local/etc/init.d/httpd start >/dev/null 2>&1" >> /opt/bootlocal.sh
+echo '[ OK ] Installing Webinterface done.'
 echo '[ INFO ] Installing ALSA'
 tce-load -wi alsa-config
 sudo echo "/sbin/modprobe snd_bcm2835" >> /opt/bootlocal.sh
