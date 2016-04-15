@@ -11,7 +11,7 @@ tce-load -wi busybox-httpd
 mkdir /home/tc/www
 mkdir /home/tc/www/cgi-bin
 $W ${REPOSITORY_SNAPCAST}/www/index.html -O /home/tc/www/index.html
-$W ${REPOSITORY_SNAPCAST}/www/cgi.bin/api.sh -O /home/tc/www/cgi-bin/api.sh
+$W ${REPOSITORY_SNAPCAST}/www/cgi-bin/api.sh -O /home/tc/www/cgi-bin/api.sh
 $WGET ${REPOSITORY_SNAPCAST}/httpd.sh -O /usr/local/etc/init.d/httpd
 chmod +x /home/tc/www/cgi-bin/api.sh
 sudo chmod +x /usr/local/etc/init.d/httpd
