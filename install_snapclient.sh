@@ -13,9 +13,16 @@ mkdir /home/tc/www/cgi-bin
 $W ${REPOSITORY_SNAPCAST}/www/index.html -O /home/tc/www/index.html
 $W ${REPOSITORY_SNAPCAST}/www/cgi-bin/api.sh -O /home/tc/www/cgi-bin/api.sh
 $WGET ${REPOSITORY_SNAPCAST}/httpd.sh -O /usr/local/etc/init.d/httpd
+$W ${REPOSITORY_SNAPCAST}/www/cgi-bin/api.sh -O /home/tc/www/cgi-bin/api.sh
+$WGET ${REPOSITORY_SNAPCAST}/scripts/config.cfg -O /usr/local/etc/config.cfg
+$WGET ${REPOSITORY_SNAPCAST}/scripts/bootup.sh -O /usr/local/sbin/bootup.sh
+sudo chmod +x /usr/local/sbin/bootup.sh
+sudo echo "usr/local/sbin/bootup.sh" >> /opt/.filetool.lst
+sudo echo "usr/local/etc/config.cfg" >> /opt/.filetool.lst
+sudo echo "/usr/local/etc/sbin/bootup.sh" >> /opt/bootlocal.sh
 chmod +x /home/tc/www/cgi-bin/api.sh
 sudo chmod +x /usr/local/etc/init.d/httpd
-sudo echo "/usr/local/etc/init.d/httpd" >> /opt/.filetool.lst
+sudo echo "usr/local/etc/init.d/httpd" >> /opt/.filetool.lst
 sudo echo "/usr/local/etc/init.d/httpd start >/dev/null 2>&1" >> /opt/bootlocal.sh
 echo '[ OK ] Installing Webinterface done.'
 echo '[ INFO ] Installing ALSA'
@@ -84,14 +91,11 @@ $WGET -s ${REPOSITORY_AVAHI}/avahi.tcz
                         sudo chmod -R 644 /tmp/avahi/*
                         sudo cp -rp /tmp/avahi/* /mnt/mmcblk0p2/tce/optional
                         sudo echo "avahi.tcz" >> /mnt/mmcblk0p2/tce/onboot.lst
-                        sudo echo "/usr/local/etc/init.d/avahi start >/dev/null 2>&1" >> /opt/bootlocal.sh
                         #bootlocal AVAHI start
                         echo '[ OK ] Done install Avahi.'
                         sudo echo "snapclient.tcz" >> /mnt/mmcblk0p2/tce/onboot.lst
-                        sudo echo "/usr/local/etc/init.d/snapclient" >> /opt/.filetool.lst
-                        sudo echo "/usr/local/etc/snapclient.conf" >> /opt/.filetool.lst
-                        sudo echo "sleep 1" >> /opt/bootlocal.sh
-                        sudo echo "/usr/local/etc/init.d/snapclient start" >> /opt/bootlocal.sh
+                        sudo echo "usr/local/etc/init.d/snapclient" >> /opt/.filetool.lst
+                        sudo echo "usr/local/etc/snapclient.conf" >> /opt/.filetool.lst
                         tce-load -wi libvorbis
                         tce-load -wi libogg
                         tce-load -wi flac
