@@ -23,6 +23,8 @@ echo -n "${BLUE}Loading configuration file... ${NORMAL}"
 . $CONFIGCFG
 echo "${GREEN}Done.${NORMAL}"
 
+/sbin/modprobe snd_bcm2835
+
 echo -n "${YELLOW}Waiting for soundcards to populate."
 CNT=1
 until aplay -l | grep -q PLAYBACK 2>&1
@@ -84,3 +86,8 @@ do
         fi
 done
 echo "${GREEN} Done ($CNT).${NORMAL}"
+
+/usr/local/etc/init.d/httpd start >/dev/null 2>&1
+/usr/local/etc/init.d/avahi start >/dev/null 2>&1
+sleep 3
+/usr/local/etc/init.d/snapclient start

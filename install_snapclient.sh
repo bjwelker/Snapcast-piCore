@@ -27,7 +27,6 @@ sudo echo "/usr/local/etc/init.d/httpd start >/dev/null 2>&1" >> /opt/bootlocal.
 echo '[ OK ] Installing Webinterface done.'
 echo '[ INFO ] Installing ALSA'
 tce-load -wi alsa-config
-sudo echo "/sbin/modprobe snd_bcm2835" >> /opt/bootlocal.sh
 echo '[ OK ] Installing ALSA done.'
 sudo mount /mnt/mmcblk0p1/
 sudo rm -f /mnt/mmcblk0p1/cmdline.txt
