@@ -19,7 +19,7 @@ $WGET ${REPOSITORY_SNAPCAST}/scripts/bootup.sh -O /usr/local/sbin/bootup.sh
 sudo chmod +x /usr/local/sbin/bootup.sh
 sudo echo "usr/local/sbin/bootup.sh" >> /opt/.filetool.lst
 sudo echo "usr/local/etc/config.cfg" >> /opt/.filetool.lst
-sudo echo "/usr/local/etc/sbin/bootup.sh" >> /opt/bootlocal.sh
+sudo echo "/usr/local/sbin/bootup.sh" >> /opt/bootlocal.sh
 chmod +x /home/tc/www/cgi-bin/api.sh
 sudo chmod +x /usr/local/etc/init.d/httpd
 sudo echo "usr/local/etc/init.d/httpd" >> /opt/.filetool.lst
