@@ -1,4 +1,5 @@
 #!/bin/sh
+SNAPCLIENT_VERSION="0.12.0"
 REPOSITORY_AVAHI="http://ralph_irving.users.sourceforge.net/pico"
 REPOSITORY_SNAPCAST="https://github.com/bjwelker/Snapcast-piCore/raw/master"
 WGET="sudo /bin/busybox wget"
@@ -26,7 +27,11 @@ sudo echo "usr/local/etc/init.d/httpd" >> /opt/.filetool.lst
 sudo echo "/usr/local/etc/init.d/httpd start >/dev/null 2>&1" >> /opt/bootlocal.sh
 echo '[ OK ] Installing Webinterface done.'
 echo '[ INFO ] Installing ALSA'
+# TCL <= 7.x -> alsa-config (depends on alsa)
 tce-load -wi alsa-config
+# TCL >= 8.x -> alsa, alsa-utils
+tce-load -wi alsa
+tce-load -wi alsa-utils
 echo '[ OK ] Installing ALSA done.'
 sudo mount /mnt/mmcblk0p1/
 sudo rm -f /mnt/mmcblk0p1/cmdline.txt
@@ -37,7 +42,7 @@ sudo mkdir /tmp/avahi
 echo '[ INFO ] Downloading Avahi from Ralphy'\''s repository...'
 echo '[ INFO ] Download will take a few minutes. Please wait...'
 
-$WGET -s ${REPOSITORY_AVAHI}/avahi.tcz
+$WGET ${REPOSITORY_AVAHI}/avahi.tcz
         if [ $? = 0 ]; then
                 RESULT=0
                 echo -n '[ INFO ] Downloading Avahi'
@@ -84,7 +89,8 @@ $WGET -s ${REPOSITORY_AVAHI}/avahi.tcz
                 if [ $RESULT = 0 ]; then
                         echo '[ OK ] Download Avahi successful.'
                         echo '[ OK ] Downloading Snapcast'
-                        $WGET ${REPOSITORY_SNAPCAST}/snapclient.tcz -O /tmp/avahi/snapclient.tcz
+                        $WGET ${REPOSITORY_SNAPCAST}/snapclient-${SNAPCLIENT_VERSION}.tcz -O /tmp/avahi/snapclient.tcz
+                        $WGET ${REPOSITORY_SNAPCAST}/snapclient.tcz.dep -O /tmp/avahi/snapclient.tcz.dep
                         echo '[ OK ] Download Snapcast successful.'
                         sudo chown -R tc:staff /tmp/avahi/*
                         sudo chmod -R 644 /tmp/avahi/*
