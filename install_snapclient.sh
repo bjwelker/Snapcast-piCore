@@ -1,5 +1,5 @@
 #!/bin/sh
-SNAPCLIENT_VERSION="0.12.0"
+SNAPCLIENT_VERSION="0.15.0"
 REPOSITORY_AVAHI="http://ralph_irving.users.sourceforge.net/pico"
 REPOSITORY_SNAPCAST="https://github.com/bjwelker/Snapcast-piCore/raw/master"
 WGET="sudo /bin/busybox wget"
